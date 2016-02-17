@@ -1,0 +1,5 @@
+:2015
+startup php-fpm
+shutdown pkill php-fpm
+log /var/log/access.log
+fastcgi / 127.0.0.1:9000 php
