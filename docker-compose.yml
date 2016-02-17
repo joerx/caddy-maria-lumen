@@ -1,0 +1,21 @@
+web:
+  build: ./docker
+  ports:
+    - "2015:2015"
+  volumes:
+    - ./app:/app
+  links:
+    - mariadb
+  environment:
+    APP_ENV: local
+    APP_DEBUG: true
+    APP_KEY: geiTh3ahHoh5ahx5eche
+    CACHE_DRIVER: memcached
+    QUEUE_DRIVER: sync
+
+mariadb: 
+  image: mariadb
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+  ports: 
+    - "3306:3306"

@@ -1,5 +1,13 @@
 :2015
 startup php-fpm
 shutdown pkill php-fpm
+
+root ./public
+
 log /var/log/access.log
+errors /var/log/error.log
+
 fastcgi / 127.0.0.1:9000 php
+rewrite / {
+  to {path} {path}/ /index.php/{path}
+}
